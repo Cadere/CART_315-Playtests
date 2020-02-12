@@ -5,6 +5,7 @@ using UnityEngine;
 public class Throw : MonoBehaviour
 {
 	public GameObject platform;
+	public GameObject camera;
 
 	// Start is called before the first frame update
 	void Start()
@@ -19,7 +20,7 @@ public class Throw : MonoBehaviour
 		{
 			GameObject clone = GameObject.Instantiate(platform, transform.position, platform.transform.rotation);
 
-			clone.GetComponent<Rigidbody>().AddForce(Vector3.forward * 100/*, ForceMode.Impulse*/);
+			clone.GetComponent<Rigidbody>().AddForce(camera.transform.forward*50,ForceMode.Impulse);
 		}
 
 	}
