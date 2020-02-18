@@ -10,25 +10,32 @@ public class materialize : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public Transform explosionPrefab;
     public int collisionCount = 0;
 
+
     void OnCollisionEnter(Collision collision)
     {
         collisionCount++;
-        if(collisionCount > 2)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
         {
-            ContactPoint contact = collision.contacts[0];
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 position = contact.point;
-            Instantiate(explosionPrefab, position, rotation);
-            Destroy(gameObject);
+            if (collisionCount > 1 && collisionCount < 3)
+            {
+                Quaternion rotation = gameObject.transform.rotation;
+                Vector3 position = gameObject.transform.position;
+                Instantiate(explosionPrefab, position, rotation);
+                Destroy(gameObject);
+            }
+            if (collisionCount >= 3)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

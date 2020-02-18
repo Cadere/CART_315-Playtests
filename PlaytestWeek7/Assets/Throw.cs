@@ -16,7 +16,7 @@ public class Throw : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(1))
+		if (Input.GetMouseButtonDown(0))
 		{
 			GameObject clone = GameObject.Instantiate(platform, transform.position, platform.transform.rotation);
 

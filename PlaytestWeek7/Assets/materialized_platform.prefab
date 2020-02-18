@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2378781395062945739}
   - component: {fileID: 7113532259753461567}
   - component: {fileID: 2392638711614886288}
-  - component: {fileID: 6845267238110732006}
   m_Layer: 0
   m_Name: materialized_platform
   m_TagString: Untagged
@@ -94,16 +93,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &6845267238110732006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281360345420502655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330c63ea0c7d3c541af071de748aca23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 0}
