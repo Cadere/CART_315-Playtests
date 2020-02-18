@@ -11,31 +11,39 @@ public class materialize : MonoBehaviour
     }
 
 
-    public Transform explosionPrefab;
+    public Transform platform;
     public int collisionCount = 0;
+    public bool deactivate = false;
+    public Material deadMaterial;
 
 
     void OnCollisionEnter(Collision collision)
     {
         collisionCount++;
+        if (collisionCount >= 4)
+        {
+            deactivate = true;
+            gameObject.GetComponent<MeshRenderer>().material = deadMaterial;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if(deactivate == false)
         {
-            if (collisionCount > 1 && collisionCount < 3)
+            if (Input.GetMouseButtonDown(1))
             {
-                Quaternion rotation = gameObject.transform.rotation;
-                Vector3 position = gameObject.transform.position;
-                Instantiate(explosionPrefab, position, rotation);
-                Destroy(gameObject);
-            }
-            if (collisionCount >= 3)
-            {
-                Destroy(gameObject);
+                if (collisionCount > 1 && collisionCount < 4)
+                {
+                    Quaternion rotation = gameObject.transform.rotation;
+                    Vector3 position = gameObject.transform.position;
+                    Instantiate(platform, position, rotation);
+                    Destroy(gameObject);
+                }
+                
             }
         }
+       
     }
 }
