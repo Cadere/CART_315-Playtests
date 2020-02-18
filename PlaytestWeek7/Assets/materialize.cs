@@ -17,13 +17,18 @@ public class materialize : MonoBehaviour
     }
 
     public Transform explosionPrefab;
+    public int collisionCount = 0;
 
     void OnCollisionEnter(Collision collision)
     {
-        ContactPoint contact = collision.contacts[0];
-        Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        Vector3 position = contact.point;
-        Instantiate(explosionPrefab, position, rotation);
-        Destroy(gameObject);
+        collisionCount++;
+        if(collisionCount > 2)
+        {
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            Vector3 position = contact.point;
+            Instantiate(explosionPrefab, position, rotation);
+            Destroy(gameObject);
+        }
     }
 }
